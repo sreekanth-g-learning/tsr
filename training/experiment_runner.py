@@ -2,14 +2,14 @@ import yaml
 from models.model_factory import build_custom_cnn
 from training.train import train_model
 from training.evaluate import evaluate_model
-from training.gradcam_comparison import compare_gradcam_across_models
+from evaluation.gradcam_comparison import compare_gradcam_across_models
 
-from training.confusion_analysis import (
+from evaluation.confusion_analysis import (
     compute_confusion_matrix,
     plot_confusion_matrix,
     get_top_confusions
 )
-from training.gradcam_error_analysis import analyze_misclassified_samples
+from evaluation.gradcam_error_analysis import analyze_misclassified_samples
 
 def run_experiments(cfg, train_ds, val_ds, test_ds):
     results = {}

@@ -1,10 +1,122 @@
-TSR - Traffic Signs Recognition
+🚦 Traffic Sign Recognition using Custom CNN & Grad-CAM
+📌 Project Overview
 
-Project setup
+This project implements a Traffic Sign Recognition (TSR) system using a Custom Convolutional Neural Network (CNN) trained on the German Traffic Sign Recognition Benchmark (GTSRB) dataset.
+The system classifies traffic signs into 43 classes, integrates Grad-CAM for explainable AI, and deploys the trained model using a Streamlit web application.
+
+The goal is to build a lightweight, accurate, and interpretable TSR system suitable for academic research and prototype ADAS applications.
+----
+🎯 Key Features
+
+Custom CNN trained end-to-end (no transfer learning)
+
+Hyperparameter grid experimentation
+
+Class-wise evaluation (accuracy, precision, recall, F1-score)
+
+Confusion matrix and error analysis
+
+Grad-CAM visual explanations
+
+Streamlit-based interactive deployment
+
+Modular, production-ready code structure
+---
+🗂️ Project Folder Structure  
+--
+traffic-sign-recognition/  
+│  
+├── data/  
+│   ├── raw/                     # Original GTSRB dataset  
+│   ├── processed/               # Preprocessed & augmented data  
+│  
+├── models/    
+│   ├── model_factory.py         # Custom CNN architectures  
+│   ├── gradcam.py               # Grad-CAM implementation  
+│  
+├── training/  
+│   ├── train.py                 # Training loop  
+│   ├── hyperparameter_grid.py   # Grid search execution  
+│   ├── callbacks.py             # Early stopping & checkpoints  
+│  
+├── evaluation/  
+│   ├── metrics.py               # Accuracy, precision, recall  
+│   ├── confusion_matrix.py      # Confusion matrix generation  
+│   ├── error_analysis.py        # Misclassification analysis  
+│  
+├── experiments/  
+│   ├── experiments.csv          # Experiment results log  
+│   ├── classwise_metrics.csv    # Class-wise performance  
+│  
+├── app/  
+│   ├── streamlit_app.py         # Streamlit web application  
+│  
+├── utils/  
+│   ├── data_loader.py           # Dataset loading & preprocessing  
+│   ├── visualization.py         # Plots & Grad-CAM overlays  
+│  
+├── checkpoints/  
+│   ├── best_model.keras         # Best model checkpoint  
+│  
+├── run_pipeline.py              # End-to-end execution script  
+├── requirements.txt             # Python dependencies  
+└── README.md                    # Project documentation  
+
+---
+🧠 Methodology Summary  
+
+Dataset Preparation  
+
+1. GTSRB dataset (43 classes)  
+
+2. Resize to 30×30 pixels  
+
+3. Grayscale conversion & normalization
+
+4. Data augmentation (rotation, zoom, shift, shear)
+
+Model Training
+
+Custom CNN with Conv → BatchNorm → Pool → GAP → Dense
+
+Hyperparameter grid search
+
+Early stopping and checkpointing
+
+Evaluation
+
+Accuracy, precision, recall, F1-score
+
+Confusion matrix
+
+Class-wise and error analysis
+
+Explainability
+
+Grad-CAM heatmaps to visualize model attention
+
+Correlation with confusion matrix errors
+
+Deployment
+
+Streamlit app for image upload
+
+Real-time prediction + Grad-CAM overlay
+----
+🚀 How to Run the Project
 -------------
-
+1️⃣ Install Dependencies
 conda create -n tsr python=3.12.11
 conda activate tsr
+pip install -r requirements.txt
+
+python -m dataprocessing.load_dataset
+python -m dataprocessing.preprocessing
+python -m training.grid_parallel
+python -m evaluation.confusion_analysis
+python -m evaluation.gradcam_error_analysis
+
+streamlit run app/streamlit_app.py
 
 
 Citation
