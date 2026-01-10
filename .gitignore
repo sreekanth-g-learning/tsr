@@ -212,4 +212,3 @@ dataset/
 output/
 results/
 logs/grid_*
-checkpoints/
