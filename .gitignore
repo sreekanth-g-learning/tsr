@@ -211,5 +211,5 @@ data/
 dataset/
 output/
 results/
-logs/
+logs/grid_*
 checkpoints/
